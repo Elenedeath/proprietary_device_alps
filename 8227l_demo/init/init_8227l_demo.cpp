@@ -58,12 +58,13 @@ void property_override_dual(char const system_prop[],
 
 void vendor_load_properties()
 {
-    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "T-Mobile/Telekom_Puls/T-Tab:5.0.1/LRX21M/vC29-0:user/release-keys");
-    property_override("ro.build.description", "Telekom_Puls-user 5.0.1 LRX21M vC29-0 release-keys");
-    property_override_dual("ro.product.model", "ro.vendor.product.model", "Telekom Puls");
-    property_override_dual("ro.product.device", "ro.vendor.product.device", "T-Tab");
-    property_override("ro.product.brand", "T-Mobile");
-    property_override("ro.product.manufacturer", "TCT Mobile Europe SAS");
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "alps/YT9218/8227l_demo:8.1.0/O11019/1592030417:user/test-keys");
+    property_override("ro.build.description", "YT9218_00005_V004");
+    property_override("ro.build.display.id", "YT9218_00005_V004");
+    property_override_dual("ro.product.model", "ro.vendor.product.model", "YT9218");
+    property_override_dual("ro.product.device", "ro.vendor.product.device", "8227l_demo");
+    property_override("ro.product.brand", "alps");
+    property_override("ro.product.manufacturer", "alps");
 
-    LOG(ERROR) << "setting build properties for T-Tab\n";
+    LOG(ERROR) << "setting build properties for YT9218\n";
 }
