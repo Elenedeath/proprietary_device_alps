@@ -50,6 +50,8 @@ BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 
 # Kernel
+TARGET_PREBUILT_KERNEL := device/alps/8227l_demo/kernel
+
 TARGET_KERNEL_CONFIG := 8227l_demo_defconfig
 TARGET_KERNEL_SOURCE := kernel/alps/8227l_demo
 BOARD_KERNEL_IMAGE_NAME := zImage
