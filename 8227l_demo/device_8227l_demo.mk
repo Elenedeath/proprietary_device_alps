@@ -152,9 +152,9 @@ PRODUCT_PACKAGES += \
     Camera2
     
 # IPv6 tethering
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes
+#PRODUCT_PACKAGES += \
+#    ebtables \
+#    ethertypes
 
 # libxlog
 PRODUCT_PACKAGES += \
