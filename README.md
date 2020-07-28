@@ -1,1 +1,0 @@
-proprietary_device_alps
