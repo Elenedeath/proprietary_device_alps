@@ -7,6 +7,16 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/alps/8227l_demo/8227l_demo-vendor.mk)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+
+PRODUCT_CHARACTERISTICS := tablet
+
+PRODUCT_DEVICE := 8227l_demo
+PRODUCT_NAME :8227l_demo
+PRODUCT_BRAND := alps
+PRODUCT_MANUFACTURER := alps
+PRODUCT_MODEL := 8227l_demo
+
 # Device overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
