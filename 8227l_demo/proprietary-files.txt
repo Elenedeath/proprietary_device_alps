@@ -1,4 +1,13 @@
-#app/MTKThermalManager/MTKThermalManager.apk
+app/gaodemap/lib/arm/libapssdk.so
+app/gaodemap/lib/arm/libAutoCrypto.so
+app/gaodemap/lib/arm/libAutoSSL.so
+app/gaodemap/lib/arm/libGbl.so
+app/gaodemap/lib/arm/libGComm3rd.so
+app/gaodemap/lib/arm/libGNet.so
+app/gaodemap/lib/arm/libGPlatformInterface.so
+app/gaodemap/lib/arm/liblinkProxy-1.0.0
+app/gaodemap/lib/arm/libsync_cxx.so
+
 bin/6620_launcher
 bin/6620_wmt_concurrency
 bin/6620_wmt_lpbk
@@ -20,7 +29,6 @@ etc/custom.conf
 etc/dhcpcd/dhcpcd-hooks/20-dns.conf
 etc/dhcpcd/dhcpcd-hooks/95-configured
 etc/dhcpcd/dhcpcd-run-hooks
-lib/egl/egl.cfg
 etc/factory.ini
 etc/firmware/ROMv2_patch_1_0_hdr.bin
 etc/firmware/ROMv2_patch_1_1_hdr.bin
@@ -44,6 +52,8 @@ etc/wide-dhcpv6/dhcp6c.script
 etc/wide-dhcpv6/dhcp6cDNS.conf
 etc/wide-dhcpv6/dhcp6cctlkey
 etc/wide-dhcpv6/dhcp6s.conf
+
+lib/egl/egl.cfg
 lib/hw/audio.primary.mt8127.so
 lib/hw/camera.mt8127.so
 lib/hw/gps.default.so:lib/hw/gps.mt8127.so
@@ -135,6 +145,7 @@ lib/libtz_uree.so
 lib/libui_ext.so
 lib/liburee_meta_drmkeyinstall_v2.so
 lib/libvcodec_utility.so
+
 vendor/media/LMspeed_508.emd
 vendor/media/PFFprec_600.emd
 xbin/mnld
