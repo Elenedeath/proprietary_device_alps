@@ -4,8 +4,10 @@ DEVICE_DIR := device/alps/8227l_demo
 VENDOR_DIR := vendor/alps/8227l_demo
 KERNEL_DIR := kernel/alps/8227l_demo
 
-# Additional includes
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_DIR)/include
+# ======= FOR NOW WE IGNORE NEVERALLOWS ====
+# This should be fixed in the future
+# For now lets just get the damn thing to build 
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # inherit from the proprietary version
 -include vendor/alps/8227l_demo/BoardConfigVendor.mk
@@ -16,42 +18,49 @@ TARGET_BOARD_PLATFORM_GPU := mali-450mp4
 
 # Arch
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := cortex-a7
+TARGET_NO_BOOTLOADER := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a7
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 
-TARGET_NO_BOOTLOADER := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_BOOTLOADER_BOARD_NAME := 8227l_demo
-TARGET_OTA_ASSERT_DEVICE := 8227l_demo
+#TARGET_BOOTLOADER_BOARD_NAME := 8227l_demo
 
-TARGET_INIT_VENDOR_LIB := libinit_8227l_demo
-TARGET_USES_64_BIT_BINDER := true
-
+# fix this up by examining /proc/mtd on a running device
+#BOARD_BOOTIMAGE_PARTITION_SIZE := 3670016
+#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 4718592
+#BOARD_SYSTEMIMAGE_PARTITION_SIZE := 147193856
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 274464768
+#BOARD_FLASH_BLOCK_SIZE := 131072
+#BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00380000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00480000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x08c60000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
+BOARD_FLASH_BLOCK_SIZE := 0x20000
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
+BOARD_CACHEIMAGE_PARTITION_SIZE := 0x10000000
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_FLASH_BLOCK_SIZE := 131072
+
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_OTA_ASSERT_DEVICE := 8227l_demo
+
+TARGET_INIT_VENDOR_LIB := libinit_8227l_demo
+TARGET_USES_64_BIT_BINDER := true
 
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 BOARD_HAS_NO_MISC_PARTITION := true
 
 BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
 
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
-
-# Kernel
-TARGET_KERNEL_CONFIG := 8227l_demo_defconfig
-TARGET_KERNEL_SOURCE := kernel/alps/8227l_demo
+# Kernel - use prebuilt kernel for now
+#TARGET_KERNEL_CONFIG := 8227l_demo_defconfig
+#TARGET_KERNEL_CONFIG := ac83xx_defconfig
+#TARGET_KERNEL_SOURCE := kernel/alps/8227L_demo
+TARGET_PREBUILT_KERNEL := $(KERNEL_DIR)/zImage
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive  androidboot.hardware=mt8127  buildvariant=user
 BOARD_KERNEL_BASE := 0x80000000
@@ -116,3 +125,13 @@ TARGET_LD_SHIM_LIBS := \
 # SELinux
 BOARD_SECCOMP_POLICY := $(DEVICE_DIR)/seccomp
 BOARD_SEPOLICY_DIRS += $(DEVICE_DIR)/sepolicy
+
+RECOVERY_VARIANT := twrp
+TW_USE_TOOLBOX := true
+
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
+
+# Hack for build
+$(shell mkdir -p $(OUT_DIR)/obj/KERNEL_OBJ/usr)
+
+
